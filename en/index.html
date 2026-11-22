@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>muzea — Android and iPhone (TestFlight)</title>
+<meta name="description" content="muzea for Android and the iPhone TestFlight beta: news, video and chat.">
+<meta property="og:title" content="muzea — Android and iPhone (TestFlight)">
+<meta property="og:description" content="News, video and chat. Android APK and iPhone TestFlight beta.">
+<meta property="og:image" content="https://muzea.su/icon-512.png">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en">
+<link rel="canonical" href="https://muzea.su/en/">
+<link rel="alternate" hreflang="ru" href="https://muzea.su/">
+<link rel="alternate" hreflang="en" href="https://muzea.su/en/">
+<link rel="alternate" hreflang="x-default" href="https://muzea.su/">
+<link rel="icon" href="/icon-512.png" type="image/png">
+<link rel="apple-touch-icon" href="/icon-512.png">
+<script src="/lang.js?v=20261102-2"></script>
+<style>
+  :root {
+    --bg: #0e0f13;
+    --card: #171922;
+    --line: #262a36;
+    --text: #eceef4;
+    --muted: #9aa1b2;
+    --accent: #4c8dff;
+    --accent-dark: #2f6fe0;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font-family: -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+    line-height: 1.6; -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 680px; margin: 0 auto; padding: 56px 20px 72px; }
+  .lang { text-align: right; margin: 0 0 -28px; font-size: .9rem; }
+  .lang a { color: var(--muted); }
+  .hero { text-align: center; }
+  .icon { width: 112px; height: 112px; border-radius: 26px; display: block; margin: 0 auto 20px;
+          box-shadow: 0 12px 32px rgba(0,0,0,.5); }
+  h1 { font-size: 2.1rem; margin: 0 0 .25em; letter-spacing: -.02em; }
+  .lead { color: var(--muted); margin: 0 0 32px; font-size: 1.05rem; }
+
+  .platforms { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; align-items: flex-start; }
+  .platform { flex: 1 1 250px; max-width: 320px; }
+
+  .btn {
+    display: flex; align-items: center; justify-content: center; gap: 10px;
+    background: var(--accent); color: #fff; text-decoration: none;
+    padding: 15px 20px; border-radius: 14px; font-size: 1rem; font-weight: 600;
+    border: 0; cursor: pointer; transition: background .15s;
+  }
+  .btn:hover { background: var(--accent-dark); }
+  .btn[aria-disabled="true"] { opacity: .55; cursor: default; }
+  .btn svg { width: 21px; height: 21px; flex: none; }
+  .btn-ios { background: #2b2f3a; }
+  .btn-ios:hover { background: #353a47; }
+
+  .meta { color: var(--muted); font-size: .85rem; margin: 10px 0 0; min-height: 1.4em; }
+  .alt { color: var(--muted); font-size: .9rem; margin: 22px 0 0; }
+  .alt a { color: var(--muted); }
+
+  .note {
+    background: var(--card); border: 1px solid var(--line); border-radius: 14px;
+    padding: 20px 22px; margin: 24px 0 0; text-align: left;
+  }
+  .note h2 { font-size: 1rem; margin: 0 0 10px; }
+  .note ol { margin: 0; padding-left: 1.2em; color: var(--muted); font-size: .95rem; }
+  .note li { margin: 6px 0; }
+  .note a { color: var(--accent); }
+  .note .hint { margin: 14px 0 0; font-size: .9rem; color: var(--muted); }
+
+  h2.docs { font-size: 1.05rem; margin: 48px 0 4px; text-align: left; }
+  .card {
+    display: block; border: 1px solid var(--line); border-radius: 12px;
+    padding: 16px 20px; margin: 12px 0; text-decoration: none; color: inherit;
+    background: var(--card); transition: border-color .15s;
+  }
+  .card:hover { border-color: var(--accent); }
+  .card b { color: var(--accent); }
+  .card span { display: block; color: var(--muted); font-size: .92rem; margin-top: 4px; }
+
+  footer { margin-top: 48px; color: var(--muted); font-size: .88rem; text-align: center; }
+  footer a { color: var(--muted); }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <p class="lang"><a href="/" data-lang="ru" hreflang="ru" lang="ru">Русский</a></p>
+
+  <div class="hero">
+    <picture>
+      <source srcset="/icon-512.webp" type="image/webp">
+      <img class="icon" src="/icon-512.png" width="112" height="112" alt="muzea app icon">
+    </picture>
+    <h1>muzea</h1>
+    <p class="lead">News, video and chat — for Android, plus an iPhone TestFlight beta.</p>
+
+    <div class="platforms">
+      <div class="platform">
+        <a class="btn" id="download" href="https://github.com/dabuldakov/muzea/releases/latest"
+           aria-disabled="true">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M17.6 9.48l1.84-3.18c.16-.31.04-.69-.26-.85-.29-.15-.65-.06-.83.22l-1.88 3.24a11.46 11.46 0 0 0-8.94 0L5.65 5.67c-.19-.29-.58-.38-.87-.2-.28.18-.37.54-.22.83L6.4 9.48A10.78 10.78 0 0 0 1 18h22a10.78 10.78 0 0 0-5.4-8.52zM7 15.25a1.25 1.25 0 1 1 0-2.5 1.25 1.25 0 0 1 0 2.5zm10 0a1.25 1.25 0 1 1 0-2.5 1.25 1.25 0 0 1 0 2.5z"/>
+          </svg>
+          <span id="download-label">Download for Android…</span>
+        </a>
+        <p class="meta" id="meta">&nbsp;</p>
+      </div>
+      <div class="platform">
+        <a class="btn btn-ios" href="mailto:dabuldakov@mail.ru?subject=muzea%20TestFlight&amp;body=Hello%21%20Please%20add%20me%20to%20the%20muzea%20iPhone%20TestFlight.%0A%0AApple%20ID%20email%3A%20%3Center%20your%20Apple%20ID%20email%20here%3E">
+          <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M11.182.008C11.148-.03 9.923.023 8.857.484c-.972.42-1.9 1.147-2.51 1.94-.63.82-1.17 2.15-1.03 3.37 1.24.05 2.5-.61 3.2-1.4.72-.82 1.25-2.1 1.09-3.38zm2.678 4.16c-1.55-.05-2.88.86-3.65.86-.79 0-1.9-.82-3.14-.8-1.6.02-3.07.93-3.9 2.36-1.67 2.9-.43 7.2 1.2 9.56.8 1.15 1.76 2.45 3.01 2.4 1.2-.05 1.66-.77 3.12-.77 1.45 0 1.86.77 3.13.75 1.3-.02 2.13-1.18 2.92-2.35.91-1.33 1.29-2.62 1.31-2.69-.03-.01-2.52-.96-2.55-3.83-.02-2.4 1.96-3.55 2.05-3.61-1.12-1.64-2.86-1.82-3.5-1.86z"/>
+          </svg>
+          <span>iPhone · TestFlight</span>
+        </a>
+        <p class="meta">Closed beta · invite only</p>
+      </div>
+
+    </div>
+
+    <p class="alt">Didn't work? <a href="https://github.com/dabuldakov/muzea/releases/latest">Open the releases list</a></p>
+  </div>
+
+
+  <section class="note" id="iphone">
+    <h2>iPhone: TestFlight beta</h2>
+    <p>
+      The iPhone app is currently available as a closed TestFlight beta.
+      To request access, email
+      <a href="mailto:dabuldakov@mail.ru?subject=muzea%20TestFlight&amp;body=Hello%21%20Please%20add%20me%20to%20the%20muzea%20iPhone%20TestFlight.%0A%0AApple%20ID%20email%3A%20%3Center%20your%20Apple%20ID%20email%20here%3E">dabuldakov@mail.ru</a>
+      with the subject “muzea TestFlight” and include the <b>email of your Apple ID</b>.
+      We will add that address to the tester group and App Store Connect will send
+      an invitation. Once you accept it, the build appears in TestFlight.
+    </p>
+    <ol>
+      <li>Install <b>TestFlight</b> from the App Store.</li>
+      <li>Email <a href="mailto:dabuldakov@mail.ru?subject=muzea%20TestFlight&amp;body=Hello%21%20Please%20add%20me%20to%20the%20muzea%20iPhone%20TestFlight.%0A%0AApple%20ID%20email%3A%20%3Center%20your%20Apple%20ID%20email%20here%3E">dabuldakov@mail.ru</a> with your Apple ID email.</li>
+      <li>Wait for the App Store Connect invitation and accept it.</li>
+      <li>Open TestFlight and install the muzea build.</li>
+    </ol>
+    <p class="hint">
+      Requires iPhone with iOS 16 or newer. This is a beta build: bugs are possible
+      and features may change. The regular Android APK is available below.
+    </p>
+  </section>
+
+  <section class="note" id="permissions">
+    <h2>Phone data access — no extra permissions</h2>
+    <p>
+      muzea does not request access to your entire photo library or address book.
+      Photos, videos and files are selected through the <b>built-in Android and iOS
+      system pickers</b>: the app only receives what you explicitly choose.
+    </p>
+    <ul>
+      <li><b>Photos and videos</b> — the system media picker (Android Photo Picker,
+          iOS Photos Picker). The rest of your gallery is not available to the app.</li>
+      <li><b>Files</b> — the system file manager; access only to the document you
+          pick, without reading all of storage.</li>
+      <li><b>Contacts</b> — your phone's address book is never requested or read.
+          The contact list in muzea consists of app users you add by username
+          inside muzea itself.</li>
+      <li><b>Camera and microphone</b> — only while recording a video note or a
+          voice message. Without permission, recording simply does not start.</li>
+      <li><b>Notifications</b> — optional: you can skip or disable them in settings;
+          the rest of the app keeps working.</li>
+      <li><b>Saving to the gallery</b> — a separate permission, requested only when
+          you tap “Save”.</li>
+    </ul>
+    <p class="hint">
+      Any permission can be revoked in Android or iOS settings.
+      See the <a href="/en/privacy">Personal Data Processing Policy</a> for details.
+    </p>
+  </section>
+
+  <section class="note">
+    <h2>How to install</h2>
+    <ol>
+      <li>Download the APK with the button above.</li>
+      <li>Open the file from "Downloads" — Android will ask whether apps from this source may be installed.</li>
+      <li>Allow installation from "Files" or from the browser and return to the installer.</li>
+      <li>The app will appear in the list as <b>muzea</b>.</li>
+    </ol>
+    <p class="hint">
+      Requires Android 7.0 or newer. The app is free and contains no ads.
+    </p>
+  </section>
+
+  <h2 class="docs">Documents</h2>
+
+  <a class="card" href="/en/privacy">
+    <b>Personal Data Processing Policy</b>
+    <span>What data is processed, for what purposes, retention periods and user rights.</span>
+  </a>
+
+  <a class="card" href="/en/terms">
+    <b>Terms of Service</b>
+    <span>Terms and conditions for using the app.</span>
+  </a>
+
+  <a class="card" href="/en/delete-account">
+    <b>Delete account</b>
+    <span>How to delete your account and associated data — in the app or by email.</span>
+  </a>
+
+  <footer>
+    Operator: Dmitry Aleksandrovich Buldakov ·
+    <a href="mailto:dabuldakov@mail.ru">dabuldakov@mail.ru</a> · +7 913 800-24-16
+  </footer>
+</div>
+
+<script>
+(function () {
+  var CACHE_TTL = 10 * 60 * 1000;
+
+  var ANDROID_REPO = 'dabuldakov/muzea-site';
+  var ANDROID_API = 'https://api.github.com/repos/' + ANDROID_REPO + '/releases/latest';
+  var ANDROID_FALLBACK = 'https://github.com/' + ANDROID_REPO + '/releases/latest';
+  var ANDROID_CACHE = 'muzea.release';
+
+  var GH_HEADERS = { Accept: 'application/vnd.github+json' };
+
+  var aButton = document.getElementById('download');
+  var aLabel = document.getElementById('download-label');
+  var aMeta = document.getElementById('meta');
+
+  function bytes(n) {
+    if (!n) return '';
+    var mb = n / 1048576;
+    return mb >= 1 ? mb.toFixed(1) + ' MB' : Math.round(n / 1024) + ' KB';
+  }
+
+  function month(d) {
+    return ['Jan','Feb','Mar','Apr','May','Jun',
+            'Jul','Aug','Sep','Oct','Nov','Dec'][d.getMonth()];
+  }
+
+  function date(s) {
+    var d = new Date(s);
+    return isNaN(d) ? '' : month(d) + ' ' + d.getDate() + ', ' + d.getFullYear();
+  }
+
+  function store(key, value) {
+    try { localStorage.setItem(key, JSON.stringify(value)); } catch (e) {}
+  }
+
+  function cached(key) {
+    try {
+      var v = JSON.parse(localStorage.getItem(key) || 'null');
+      if (v && v.url && Date.now() - v.at < CACHE_TTL) return v;
+    } catch (e) {}
+    return null;
+  }
+
+  function enable(button) { button.removeAttribute('aria-disabled'); }
+
+  // --- Android: latest release APK ---
+  function androidReady(release, url, size) {
+    var version = (release.tag_name || '').replace(/^v/, '');
+    aLabel.textContent = 'Download for Android (APK)';
+    aButton.href = url;
+    enable(aButton);
+    var parts = [];
+    if (version) parts.push('version ' + version);
+    if (size) parts.push(bytes(size));
+    var when = date(release.published_at);
+    if (when) parts.push(when);
+    aMeta.textContent = parts.join(' · ') || 'Latest build';
+    store(ANDROID_CACHE, { at: Date.now(), release: release, url: url, size: size });
+  }
+
+  function androidFallback(reason) {
+    aButton.href = ANDROID_FALLBACK;
+    aLabel.textContent = 'Download for Android (APK)';
+    enable(aButton);
+    aMeta.textContent = 'Go to the APK download';
+    console.warn('muzea: ' + reason);
+  }
+
+  function loadAndroid() {
+    fetch(ANDROID_API, { headers: GH_HEADERS })
+      .then(function (res) {
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        return res.json();
+      })
+      .then(function (release) {
+        var apk = (release.assets || []).filter(function (a) {
+          return /\.apk$/i.test(a.name);
+        })[0];
+        if (!apk) throw new Error('no APK in the release');
+        androidReady(release, apk.browser_download_url, apk.size);
+      })
+      .catch(function (err) { androidFallback(err.message); });
+  }
+
+  var androidCache = cached(ANDROID_CACHE);
+  if (androidCache) androidReady(androidCache.release, androidCache.url, androidCache.size);
+  else loadAndroid();
+})();
+</script>
+</body>
+</html>
