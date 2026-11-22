@@ -48,9 +48,13 @@ curl --user "$FTP_USER:$FTP_PASSWORD" --ftp-create-dirs \
 Или одной командой (публикует релиз и сразу кладёт APK на хостинг сайта):
 
 ```bash
+# APK можно взять локальный — скачивание из приватного релиза GitHub медленное
+APK=../muzea/app/build/outputs/apk/release/app-release.apk \
 FTP_HOST=31.31.196.115 FTP_USER=... FTP_PASSWORD=... \
   ./scripts/promote-release.sh v1.7.55
 ```
+
+Без `APK` скрипт скачает ассет из приватного релиза (может быть долго).
 
 Сайт и приложение берут из GitHub только метаданные (версию и заметки), а сам
 APK скачивают с `https://muzea.su/downloads/muzea-<version>.apk` — GitHub

@@ -18,11 +18,20 @@ VERSION="${TAG#v}"
 TMP="$(mktemp -d)"
 trap 'rm -rf "$TMP"' EXIT
 
-echo "==> скачиваю $TAG из $APP_REPO"
-gh release download "$TAG" -R "$APP_REPO" -p '*.apk' -D "$TMP"
+if [[ -n "${APK:-}" ]]; then
+  # Локальная сборка: не тратим время на медленное скачивание из GitHub.
+  APK_FILE="$APK"
+  [[ -f "$APK_FILE" ]] || { echo "!! APK не найден: $APK_FILE" >&2; exit 1; }
+  echo "==> использую локальный APK: $APK_FILE"
+else
+  echo "==> скачиваю $TAG из $APP_REPO"
+  gh release download "$TAG" -R "$APP_REPO" -p '*.apk' -D "$TMP"
+  APK_FILE="$(find "$TMP" -maxdepth 1 -type f -name '*.apk' | head -1)"
+  [[ -n "$APK_FILE" ]] || { echo "!! в релизе нет APK" >&2; exit 1; }
+fi
 
-APK_FILE="$(find "$TMP" -maxdepth 1 -type f -name '*.apk' | head -1)"
-[[ -n "$APK_FILE" ]] || { echo "!! в релизе нет APK" >&2; exit 1; }
+ASSET="$TMP/muzea-$VERSION.apk"
+[[ "$APK_FILE" == "$ASSET" ]] || cp "$APK_FILE" "$ASSET"
 
 NOTES="$TMP/release-notes.md"
 if gh release view "$TAG" -R "$APP_REPO" --json body -q .body > "$NOTES" 2>/dev/null && [ -s "$NOTES" ]; then
@@ -32,7 +41,7 @@ else
 fi
 
 echo "==> публикую $TAG в $SITE_REPO"
-gh release create "$TAG" "$APK_FILE" \
+gh release create "$TAG" "$ASSET" \
   -R "$SITE_REPO" \
   --title "muzea $VERSION" \
   --notes-file "$NOTES" \
@@ -42,7 +51,7 @@ if [[ -n "${FTP_HOST:-}" && -n "${FTP_USER:-}" && -n "${FTP_PASSWORD:-}" ]]; the
   FTP_DIR="${FTP_DIR:-/www/muzea.su/downloads}"
   echo "==> загружаю APK на $FTP_HOST:$FTP_DIR"
   curl -sS --ftp-create-dirs --user "$FTP_USER:$FTP_PASSWORD" \
-    -T "$APK_FILE" "ftp://$FTP_HOST$FTP_DIR/muzea-$VERSION.apk"
+    -T "$ASSET" "ftp://$FTP_HOST$FTP_DIR/muzea-$VERSION.apk"
   echo "==> APK: https://muzea.su/downloads/muzea-$VERSION.apk"
 else
   echo "!! FTP_HOST/FTP_USER/FTP_PASSWORD не заданы — APK не попал на сайт" >&2
