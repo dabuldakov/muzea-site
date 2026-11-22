@@ -215,7 +215,7 @@
 (function () {
   var CACHE_TTL = 10 * 60 * 1000;
 
-  var ANDROID_REPO = 'dabuldakov/muzea-site';
+  var ANDROID_REPO = 'dabuldakov/muzea';
   var ANDROID_API = 'https://api.github.com/repos/' + ANDROID_REPO + '/releases/latest';
   var ANDROID_FALLBACK = 'https://github.com/' + ANDROID_REPO + '/releases/latest';
   var ANDROID_CACHE = 'muzea.release';
@@ -290,7 +290,7 @@
           return /\.apk$/i.test(a.name);
         })[0];
         if (!apk) throw new Error('в релизе нет APK');
-        // APK раздаём с нашего хостинга: GitHub Releases в РФ очень медленный.
+        // Метаданные — из публичного GitHub-репозитория приложения, APK — с сайта.
         var version = (release.tag_name || '').replace(/^v/, '');
         var url = version
           ? 'https://muzea.su/downloads/muzea-' + version + '.apk'
