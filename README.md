@@ -40,6 +40,12 @@ gh release create v1.7.55 /tmp/muzea-release/muzea-1.7.55.apk \
   --latest
 ```
 
+Или одной командой:
+
+```bash
+./scripts/promote-release.sh v1.7.55
+```
+
 Требования:
 
 - имя ассета должно заканчиваться на `.apk` — по этому признаку его находят
