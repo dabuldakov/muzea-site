@@ -12,8 +12,8 @@
 | `icon-512.png`, `icon-512.webp` | иконки |
 | `lang.js` | переключатель языка |
 
-Сайт статический, без сборки. Хостинг — reg.ru, загрузка по FTP в корень
-домена `muzea.su`.
+Сайт статический, без сборки. Хостинг — reg.ru, docroot `www/muzea.su`,
+загрузка по FTP.
 
 ## Android-релизы
 
@@ -88,13 +88,13 @@ iOS распространяется через TestFlight (закрытое т�
 
 ## Публикация сайта по FTP
 
-В корне репозитория лежит ровно то, что должно оказаться в корне домена.
+В корне репозитория лежит ровно то, что должно оказаться в `www/muzea.su`.
 Учётные данные FTP в репозиторий не попадают.
 
 ```bash
 # пример: загрузить только изменённые страницы
-curl --user "$FTP_USER:$FTP_PASSWORD" -T index.html ftp://31.31.196.115/index.html
-curl --user "$FTP_USER:$FTP_PASSWORD" -T en/index.html ftp://31.31.196.115/en/index.html
+curl --user "$FTP_USER:$FTP_PASSWORD" -T index.html   ftp://31.31.196.115/www/muzea.su/index.html
+curl --user "$FTP_USER:$FTP_PASSWORD" -T en/index.html   ftp://31.31.196.115/www/muzea.su/en/index.html
 ```
 
 После загрузки проверить `https://muzea.su/` и `https://muzea.su/en/`.
