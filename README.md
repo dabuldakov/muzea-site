@@ -38,13 +38,23 @@ gh release create v1.7.55 /tmp/muzea-release/muzea-1.7.55.apk \
   --title "muzea 1.7.55" \
   --notes "Что изменилось: ..." \
   --latest
+
+# 3. Положить APK на хостинг сайта
+curl --user "$FTP_USER:$FTP_PASSWORD" --ftp-create-dirs \
+  -T /tmp/muzea-release/muzea-1.7.55.apk \
+  "ftp://31.31.196.115/www/muzea.su/downloads/muzea-1.7.55.apk"
 ```
 
-Или одной командой:
+Или одной командой (публикует релиз и сразу кладёт APK на хостинг сайта):
 
 ```bash
-./scripts/promote-release.sh v1.7.55
+FTP_HOST=31.31.196.115 FTP_USER=... FTP_PASSWORD=... \
+  ./scripts/promote-release.sh v1.7.55
 ```
+
+Сайт и приложение берут из GitHub только метаданные (версию и заметки), а сам
+APK скачивают с `https://muzea.su/downloads/muzea-<version>.apk` — GitHub
+Releases в России отдаёт файлы очень медленно.
 
 Требования:
 
