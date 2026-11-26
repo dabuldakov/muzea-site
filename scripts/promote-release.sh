@@ -66,6 +66,29 @@ else
   echo "muzea $VERSION" > "$NOTES"
 fi
 
+# Манифест для проверки обновлений в приложении. Он публикуется вместе с APK,
+# чтобы приложение не увидело новую версию раньше, чем файл доступен.
+VERSION_JSON="$TMP/version.json"
+python3 - "$VERSION" "$SITE_URL/downloads/muzea-$VERSION.apk" "$NOTES" > "$VERSION_JSON" <<'PYEOF'
+import json
+import sys
+version, url, notes_path = sys.argv[1], sys.argv[2], sys.argv[3]
+try:
+    changelog = open(notes_path, encoding="utf-8").read()
+except OSError:
+    changelog = ""
+print(json.dumps({
+    "version": version,
+    "downloadUrl": url,
+    "changelog": changelog,
+}, ensure_ascii=False))
+PYEOF
+if [[ -n "${FTP_HOST:-}" && -n "${FTP_USER:-}" && -n "${FTP_PASSWORD:-}" ]]; then
+  echo "==> загружаю version.json"
+  curl -sS --ftp-create-dirs --user "$FTP_USER:$FTP_PASSWORD" \
+    -T "$VERSION_JSON" "ftp://$FTP_HOST/www/muzea.su/version.json"
+fi
+
 echo "==> создаю архивный релиз $TAG в $SITE_REPO"
 gh release create "$TAG" "$ASSET" \
   -R "$SITE_REPO" \
