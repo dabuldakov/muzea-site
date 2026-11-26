@@ -30,6 +30,16 @@ https://api.github.com/repos/dabuldakov/muzea/releases/latest
 https://muzea.su/downloads/muzea-<version>.apk
 ```
 
+Приложение проверяет обновления по манифесту:
+
+```
+https://muzea.su/version.json
+```
+
+`version.json` содержит `version`, `downloadUrl` и `changelog`; его создаёт
+`scripts/promote-release.sh` вместе с загрузкой APK. GitHub Releases остаётся
+fallback-каналом для старых сборок и истории.
+
 Так быстрее: GitHub Releases в РФ отдаёт файлы ~10 КБ/с, а сайт — сотни КБ/с.
 
 Workflow `Release` в `dabuldakov/muzea` собирает подписанные APK/AAB и
