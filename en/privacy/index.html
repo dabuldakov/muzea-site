@@ -43,6 +43,7 @@ automation tools. User — a natural person using the Application.</p>
 <h2>3. Information about the operator</h2>
 <ul>
   <li>Operator: Dmitry Aleksandrovich Buldakov (natural person).</li>
+  <li>INN: 701712666930.</li>
   <li>Address for correspondence: Tomsk Region, the city of Tomsk, Pushkina St., 61/3, apt. 267.</li>
   <li>Email: <a href="mailto:dabuldakov@mail.ru">dabuldakov@mail.ru</a>.</li>
   <li>Phone: +7 913 800-24-16.</li>
@@ -117,30 +118,41 @@ depersonalization, blocking, deletion, destruction and restriction of access.</p
 in section 8 of this Policy.</p>
 
 <h2>8. Cross-border transfer</h2>
-<p>Cross-border transfer of personal data is carried out only in respect of the
-application instance identifier (device token) required for the delivery of push
-notifications, to Google Ireland Limited (Ireland). Other personal data is not
-transferred outside the territory of the Russian Federation.</p>
-<p>The Operator notifies the authorized body for the protection of the rights of data
-subjects of its intention to carry out cross-border transfer in accordance with the
-established procedure.</p>
+<p>Certain data is transferred outside the Russian Federation:</p>
+<ul>
+  <li><b>Google Ireland Limited (Ireland) and Google LLC (USA)</b> — FCM:
+      device push token, notification type, identifiers, and, if included in the
+      push, the notification text, sender name and chat title;</li>
+  <li><b>Apple Inc. (USA)</b> — APNs for push notifications in the iOS app;</li>
+  <li><b>KLIPY (USA)</b> — the GIF search query and the device IP address;</li>
+  <li><b>third-party websites</b> — when building link previews, the device
+      contacts the website from the message and sends its IP address;</li>
+  <li><b>recipients' email providers</b> — if a sign-in code email is sent to
+      Gmail, iCloud or another foreign mailbox.</li>
+</ul>
+<p>Sign-in code emails are sent via Mail.ru (Russia). The Operator notifies the
+authorized body of its intention to carry out cross-border transfer in accordance
+with the established procedure.</p>
 
 <h2>9. Processing and retention periods</h2>
 <table>
   <tr><th>Data</th><th>Retention period</th></tr>
-  <tr><td>User account and profile</td><td>the entire period of use of the Application</td></tr>
-  <tr><td>Chat messages</td><td>the entire period of use of the Application</td></tr>
-  <tr><td>User content (posts, videos)</td><td>the entire period of placement on the server</td></tr>
-  <tr><td>Security event logs</td><td>1 year</td></tr>
-  <tr><td>Authorization tokens on the device</td><td>until signing out of the account</td></tr>
+  <tr><td>Account and profile</td><td>until the account is deleted</td></tr>
+  <tr><td>Messages, attachments and user content</td><td>until the account is deleted</td></tr>
+  <tr><td>After account deletion or consent withdrawal</td><td>blocked for up to 30 days, then destroyed</td></tr>
+  <tr><td>Security event logs</td><td>up to 90 days</td></tr>
+  <tr><td>Backups</td><td>7 days</td></tr>
+  <tr><td>One-time sign-in codes</td><td>10 minutes</td></tr>
+  <tr><td>Authorization tokens on the device</td><td>until signing out</td></tr>
 </table>
-<p>After withdrawal of consent or deletion of the account, processing stops: the
-account is blocked (deactivated), access to it is closed, and the name, surname
-and username are hidden from other Users. The data itself is retained in a blocked
-state to keep other Users' conversations intact and to allow the account to be
-restored; it is destroyed once the processing purposes are achieved, the retention
-period expires, or at the User's separate request, in the manner established by
-the legislation of the Russian Federation.</p>
+<p>After deletion the account is blocked for <b>30 days</b>: data is not used for
+normal operation, the profile is hidden, and sessions and push tokens are
+revoked. During this period the account can be restored through support with a
+new consent. After 30 days the profile, messages, attachments, posts and videos
+are deleted from the server. Chats keep technical “Message deleted” markers
+without text, attachments or author. Recipients may keep local copies on their
+devices. If the law requires certain data to be retained longer, the Operator
+keeps only what is necessary for the period required by law.</p>
 
 <h2>10. Security measures</h2>
 <ul>
@@ -170,24 +182,26 @@ the legislation of the Russian Federation.</p>
 <p>The User is obliged to provide accurate information during registration and to keep
 it up to date in the Application profile.</p>
 
-<h2>12. Procedure for withdrawing consent and deleting the account</h2>
+<h2>12. Withdrawal of consent and account deletion</h2>
 <ol>
-  <li>12.1. Consent is withdrawn in the “Profile” section of the Application (the
-      “Delete account” function) or by sending a request to
+  <li>12.1. Consent may be withdrawn in the Application under “Profile” (the
+      “Delete account” function) or by email to
       <a href="mailto:dabuldakov@mail.ru">dabuldakov@mail.ru</a>.</li>
-  <li>12.2. The Operator stops processing and blocks the User's personal data within
-      10 business days from the receipt of the withdrawal. Blocked data is retained
-      to keep other Users' conversations intact and to allow the account to be
-      restored, and is destroyed once the processing purposes are achieved, the
-      retention period expires, or at the User's separate request, unless otherwise
-      provided by law.</li>
-  <li>12.3. When an account is deleted, access is closed, authorization sessions and
-      device tokens are revoked, the name, surname and username are hidden, and
-      private chats become read-only. The User is removed from group chats, but their
-      messages and attachments in those chats are retained; ownership of the chat is
-      transferred to the next participant. The profile, news, posts, videos and files
-      are retained in a blocked state and can be restored through support.</li>
-  <li>12.4. Users' requests are processed within 30 days from the date of their receipt.</li>
+  <li>12.2. The Operator stops processing and blocks the User's personal data for
+      30 days after receiving the withdrawal or account deletion. During this
+      period the account can be restored through support; restoration requires a
+      new consent. After 30 days the data is destroyed, unless a different period
+      is required by law.</li>
+  <li>12.3. When the account is deleted, sessions and device tokens are revoked,
+      and the profile, contacts, push tokens, messages, attachments, posts and
+      videos are deleted from the server. Chats keep technical markers without
+      text, attachments or author. The User is removed from groups; chat
+      ownership is transferred to the next participant.</li>
+  <li>12.4. Within 30 days the account can be restored through support. After
+      30 days restoration is impossible; to return, the User must register again,
+      and previous messages and posts are not restored.</li>
+  <li>12.5. User requests are processed within 10 business days of receipt,
+      unless a different period is required by law.</li>
 </ol>
 
 <h2>13. Cookies and other technologies</h2>
