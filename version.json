@@ -1,5 +1,5 @@
 {
-  "version": "1.7.62",
-  "downloadUrl": "https://muzea.su/downloads/muzea-1.7.62.apk",
+  "version": "1.7.63",
+  "downloadUrl": "https://muzea.su/downloads/muzea-1.7.63.apk",
   "changelog": "## ✨ Новое\n- News: лайки, просмотры, комментарии и редактирование новостей [FEED.07]\n- Update: скачивать APK с muzea.su вместо GitHub Releases\n- Update: проверять релизы в публичном muzea-site\n- Ui: светлая тема и переключатель в профиле [UI.19]\n- Chat: композер и мета бабла по макету v7 [UI.17]\n- Ui: Nunito, мета внутри бабла и шапка-карточка [UI.17]\n- Ui: тени, вкладки-кнопки и векторные иконки [UI.17]\n- Ui: тёмная тема в стиле нео-брутализма [UI.17]\n\n## 🐛 Исправления\n- Update: метаданные релизов из публичного dabuldakov/muzea\n- Obs: маскировать персональные данные в отчётах [OBS.01]\n- Media: устойчивый разбор кэша гифок [MEDIA.10]\n- Chat: иконки композера и искры по фону [UI.17]\n\n## 📝 Документация\n- Release: зафиксировать закрытие линии 1.7.33\n- Ui: онлайн участников в планы [UI.18]\n\n## ✅ Тесты\n- Contract: makeup-фикстуры news/video/user с iOS\n- Contract: совместимость с main — статусы и авторы реакций через JSON\n- Contract: общие фикстуры чата с iOS-репозиторием\n\n\n"
 }
